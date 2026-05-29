@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPickerBackground">#0D1B3E</color>
+    <color name="colorItemBackground">#172645</color>
+    <color name="colorDetailsBackground">#0D1B3E</color>
+</resources>

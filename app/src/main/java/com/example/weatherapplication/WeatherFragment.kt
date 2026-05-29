@@ -9,13 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class WeatherFragment : Fragment() {
-    private val numberList = ArrayList<Int>()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        // Start from 1 to match the screenshot
-        numberList.addAll(1..100)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,6 +23,11 @@ class WeatherFragment : Fragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = WeatherAdapter(numberList)
+        recyclerView.adapter = WeatherAdapter(CityData.cities) { city ->
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container_view, CityDetailsFragment.newInstance(city))
+                .addToBackStack(null)
+                .commit()
+        }
     }
 }
